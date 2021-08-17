@@ -28,4 +28,5 @@ import './main2.js'
 // a: 1
 // b: 2
 
-console.log(a)
+const app = document.querySelector('[data-js="app"]')
+console.log(app)
