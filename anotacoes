@@ -1,0 +1,5 @@
+yarn add --exact react
+
+yarn add --exact --dev react-dom
+
+yarn create vite .
