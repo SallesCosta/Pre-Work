@@ -6,7 +6,31 @@ body {
   color: #2c3e50;
   margin-top: 60px;
 }
+.show {
+
+}
 
 .hide {
   display: none;
+}
+.button {
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s;
+  border: 2px solid #555555;
+  border-radius: 15px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #555555;
+  color: white;
 }
