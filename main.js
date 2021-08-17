@@ -1,5 +1,5 @@
 import './style.css'
-import './main2'
+import './main2.js'
 
 // quando usamos o getElementsByTagName ou Id.. ou Name, temos uma HTMLCollection
 // HTML Collection => ela é 'viva'... conforme eu adiciono novas tags <div>.. o console muda a quantidade
@@ -27,3 +27,5 @@ import './main2'
 //no console vai aparecer
 // a: 1
 // b: 2
+
+console.log(a)
