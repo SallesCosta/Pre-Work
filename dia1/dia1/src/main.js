@@ -27,3 +27,11 @@ link.addEventListener('click', ()=>{
   }
 }, false)
 
+
+// // Solucao 1 do professor
+// link.addEventListener('click', (e)=>{
+// e.preventDefault()
+// app.classList.toggle('hide')
+// })
+
+// // Solução 2 do professor
