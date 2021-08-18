@@ -1,5 +1,7 @@
 function calculadora (callback) {
-return callback
+// return callback      //minha solução
+    return (a,b) => {         // outra solução do professor
+      return callback(a,b)}    // outra solução do professor
 }
 
 const sum = calculadora((a, b) => a + b)
