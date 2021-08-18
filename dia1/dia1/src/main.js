@@ -1,6 +1,7 @@
 import './style.css'
 //// #Base
-const app = document.querySelector('[data-js="app"]').innerHTML = `
+const app = document.querySelector('[data-js="app"]')
+app.innerHTML = `
 <h1>B. Academy</h1>
 <p>Boas vindas à semana de pré-work para o Bootcamp em React.js 😁</p>
 `
@@ -30,7 +31,6 @@ const app = document.querySelector('[data-js="app"]').innerHTML = `
 
 //// Solucao 1 do professor
 // const link = document.querySelector('[data-js="link"]')
-
 // link.addEventListener('click', (e) => {
 //   e.preventDefault()
 //   // console.log(app)  //esse console esta OK
@@ -38,16 +38,17 @@ const app = document.querySelector('[data-js="app"]').innerHTML = `
 //   app.style.display = display === 'none' ? 'block' : 'none'
 // })
 
-//// Solução 2 do professor
- const link = document.querySelector('[data-js="link"]')
 
-link.addEventListener('click', (e) => {
-  e.preventDefault()
-  app.classList.toggle('hide')
-  e.target.textConten = e.target.textConten === 'Esconder'
-  ? 'Exibir'
-  : 'Esconder'
-})
+
+//// Solução 2 do professor
+//  const link = document.querySelector('[data-js="link"]')
+// link.addEventListener('click', (e) => {
+//   e.preventDefault()
+//   app.classList.toggle('hide')
+//   e.target.textConten = e.target.textConten === 'Esconder'
+//   ? 'Exibir'
+//   : 'Esconder'
+// })
 //esse toggle (alternador) fará o seguinte: se houver a classe 'hide' ele vai remover..
 //e se nao houver ele vai adicionar a classe 'hide'
 
