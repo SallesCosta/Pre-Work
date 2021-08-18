@@ -1,6 +1,6 @@
 {
-  "private":"true",
-  "name": "l",
+  "private": true,
+  "name": "dia2",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
