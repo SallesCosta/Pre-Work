@@ -12,6 +12,34 @@ inputName.addEventListener('input', (e) => {
 function fixCase(word) {
     return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
 }
+
+const form = document.querySelector('[data-js="form"]')
+const select = document.querySelector('[data-js="select"]')
+const colors = []
+const colorsContainer = document.querySelector('div')
+colorsContainer.style.display = 'flex'
+
+colors.forEach(color => {
+  const option = document.createElement('option')
+  option.value=color
+  option.textConten = color
+  select.appendChild(option)
+})
+
+select.addEventListener('change', (e)=>{
+  colorsContainer.innerHTML = ''
+  Array.from(e.target.selectedOptions).map(option =>{
+    const div = document.createElement('div')
+    div.style.width = '100px'
+    div.style.height = '100px'
+    div.style.backgroundColor = option.value
+    colorsContainer.appendChild(div)
+  })
+})
+
+select.setAttribute('multiple', '')
+form.appendChild(select)
+
 // console.log (inputName)
 // console.log(e.target.value)
 //   const txt =  e.target.value = e.target.value.toLowerCase()   //lega
@@ -35,8 +63,8 @@ function fixCase(word) {
 
 // const app = document.querySelector('[data-js="app"]')
 
-// const mcolor = document.querySelector('[data-js="mcolor"]')
-// mcolor.addEventListener('change', (e) => {
+// const select = document.querySelector('[data-js="select"]')
+// select.addEventListener('change', (e) => {
 //   [...e.target.selectedOptions].map(el => {
 //     const div = document.createElement('div')
 //     const id = el.id
