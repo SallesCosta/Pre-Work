@@ -21,6 +21,21 @@
 
 // console.log(capitalizeFirst(abc))
 
+// console.log([...e.target.selectedOptions].map(el => el.value))
 
 const mcolor = document.querySelector('[data-js="mcolor"]')
-console.log(mcolor.value)
+mcolor.addEventListener('change', (e) => {
+  [...e.target.selectedOptions].map(el => {
+    const app = document.querySelector('[data-js="app"]')
+    let id = el.id
+    app.innerHTML = `<div style="width: 100px;height: 100px; background-color: ${id};"></div>`
+  })
+})
+
+
+
+
+
+
+
+  //const div = document.createElement('div')
