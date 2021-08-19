@@ -1,10 +1,10 @@
 // import './style.css'
 // import './main2.js'
 
-//// quando usamos o getElementsByTagName ou Id.. ou Name, temos uma HTMLCollection
-//// HTML Collection => ela é 'viva'... conforme eu adiciono novas tags <div>.. o console muda a quantidade
-//// se ele muda a quantidade ele é exatamente o contrário do princípio da IMUTABILIDADE... nao recomendado hj em dia
-//// evita efeitos colaterais
+// // quando usamos o getElementsByTagName ou Id.. ou Name, temos uma HTMLCollection
+// // HTML Collection => ela é 'viva'... conforme eu adiciono novas tags <div>.. o console muda a quantidade
+// // se ele muda a quantidade ele é exatamente o contrário do princípio da IMUTABILIDADE... nao recomendado hj em dia
+// // evita efeitos colaterais
 
 // const a = document.getElementsByTagName('div')
 // console.log(a.length)  //ver no console  HTMLCollection
