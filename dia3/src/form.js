@@ -59,7 +59,7 @@ colors.forEach(color => {
 select.setAttribute('multiple', '')
 form.appendChild(select)
 document.body.appendChild(colorsContainer)
-c(select)
+//c(select)
 
 
 

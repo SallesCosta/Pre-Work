@@ -6,14 +6,3 @@ body {
   color: #2c3e50;
   margin-top: 60px;
 }
-form {
-  margin-bottom: 60px;
-}
-
-label {
-  display: block;
-}
-
-.cars {
-  display: flex;
-}
