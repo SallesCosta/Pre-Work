@@ -56,25 +56,27 @@
 
 ////Anotacoes do dia 2
 
-import './style.css'
+// import './style.css'
 
-let name = "Eduardo"
+// let name = "Eduardo"
 
-function render({ title, description }) {
+// function render({ title, description }) {
 
-  document.querySelector('#app').innerHTML = `
-  <h1>Hello ${title}</h1>
-  ${description ? `<p>${description}</p>` : ""}
-  `
-}
-const link = document.querySelector('[data-js="link"]')
-link.addEventListener('click', (e) => {
-  e.preventDefault()
-  render({ title: 'Eduardo' })
-})
+//   document.querySelector('#app').innerHTML = `
+//   <h1>Hello ${title}</h1>
+//   ${description ? `<p>${description}</p>` : ""}
+//   `
+// }
+// const link = document.querySelector('[data-js="link"]')
+// link.addEventListener('click', (e) => {
+//   e.preventDefault()
+//   render({ title: 'Eduardo' })
+// })
 
-render({ title: 'Vite', description: 'vite é veloz' })
+// render({ title: 'Vite', description: 'vite é veloz' })
 
 // Higher Order Functions => é uma função extraordinaria
 // pode retornar uma function por argumento e pode fornecer outra função
 
+
+// Anotações do dia 3
