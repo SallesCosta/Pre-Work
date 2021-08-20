@@ -1,8 +1,23 @@
-// const inputName = document.querySelector('[data-js="username"]')
+function c(x) {
+  console.log(x)
+}
+
+function $(x) {
+  return document.querySelector(`[data-js='${x}']`)
+}
+
+function $$(x) {
+  return document.querySelectorAll(`[data-js='${x}']`)
+}
+
+
+
+// // Exercício 1
+// const inputName = $('username')
 // const dontChang = ['da', 'das', 'de', 'do', 'dos']
 // inputName.addEventListener('input', (e) => {
 //   const valueAsArray = e.target.value.split(' ')
-//   console.log(valueAsArray)
+//   c(valueAsArray)
 //   e.target.value = valueAsArray.map((word) => {
 //     return dontChang.includes(word.toLowerCase())
 //     ? word.toLowerCase()
@@ -10,21 +25,24 @@
 //   }).join(' ')
 // })
 // function fixCase(word) {
-//     return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+//   return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
 // }
 
+// Exercício 2
 // const form = document.querySelector('[data-js="form"]')
-// const select = document.querySelector('[data-js="select"]')
-// const colors = []
-// const colorsContainer = document.querySelector('div')
+const form = $('form')
+const select = document.createElement('select')
+const colors = ['#6B7280', '#EF4444', '#F59E0B', '#10B981', '#3B82F6', '#6366F1', '#8B5CF6', '#EC4899']
+
+// const colorsContainer = $('div')
 // colorsContainer.style.display = 'flex'
 
-// colors.forEach(color => {
-//   const option = document.createElement('option')
-//   option.value=color
-//   option.textConten = color
-//   select.appendChild(option)
-// })
+colors.forEach(color => {
+  const option = document.createElement('option')
+  option.value=color
+  option.textConten = color
+  select.appendChild(option)
+})
 
 // select.addEventListener('change', (e)=>{
 //   colorsContainer.innerHTML = ''
@@ -37,12 +55,13 @@
 //   })
 // })
 
-// select.setAttribute('multiple', '')
-// form.appendChild(select)
+select.setAttribute('multiple', '')
+form.appendChild(select)
+c(select)
 
 
 
-
+// Exercício 3
 
 // console.log (inputName)
 // console.log(e.target.value)
@@ -76,4 +95,17 @@
 //     app.appendChild(div)
 //   })
 // })
+
+
+
+
+
+
+
+
+
+
+
+
+
 
