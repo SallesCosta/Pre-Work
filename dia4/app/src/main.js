@@ -49,20 +49,20 @@ form.addEventListener('submit', async (e) => {
 
   const data = {   // esses são os dados que vem da api 
     image: getElement('image').value,
-    bradModel: getElement('brand-model').value,
+    brandModel: getElement('brand-model').value,
     year: getElement('year').value,
     plate: getElement('plate').value,
     color: getElement('color').value
   }
-
+ 
   const result = await post(url, data)
 
   if (result.error) {
     c('deu erro na hora de cadastrar', result.message)
     return
   }
-  const noContent = document.querySelector('[data-js="not-content"]')
-  table.removeChild(noContent) //inserido em 1h41 
+  const noContent = document.querySelector('[data-js="no-content"]')
+  table.removeChild(noContent) 
   createTableRow(data)
 
   e.target.reset()
@@ -85,33 +85,34 @@ function createTableRow(data) {
     const td = elementsTypes[element.type](element.value)
     tr.appendChild(td)
   })
-  table.appendChild(tr)
+
   
-  const button = document.createElement('buttton')
+  const button = document.createElement('button')
   button.textContent = 'Excluir'
   button.dataset.plate = data.plate
   
   button.document.addEventListener('click', handleDelete)
   tr.appendChild(button)
+  table.appendChild(tr)
 }
 
 async function handleDelete(e) {
   const button = e.target
   const plate = button.dataset.plate
-  
-  const result = await del(url, { plate: plate  })
-  
-  if(result.error){
+
+    const result = await del(url, { plate })
+ 
+  if (result.error) {
     console.log('erro ao deletar', result.elements)
-    return  
+    return
   }
 
   const tr = document.querySelector(`tr[data-plate="${plate} "]`)
   table.removeChild(tr)
   button.removeElementListener('click', handleDelete)
   const allTrs = document.querySelector('tr')
-  if(!allTrs) {
-    createTableRow( )
+  if (!allTrs) {
+    createTableRow()
   }
 }
 
@@ -120,7 +121,7 @@ function createNoCarRow() {
   const td = document.createElement('td')
   const thsLength = document.querySelectorAll('table th').length
   td.setAttribute('colspan', thsLength)
-  td.textContent = 'Nenhum carro encontrado '
+  td.textContent = 'Nenhum carro encontrado'
 
 
   tr.dataset.js = 'no-content'  // tr.setAttribute('data-js', 'no-content') //dataset.xx é a mesma coisa que setAttribute 
