@@ -1,6 +1,6 @@
 function c(x) { console.log(x) } function $(x) { return document.querySelector(`[data-js='${x}']`) }
 
- const url = 'http://localhost:3333/cars'
+const url = 'http://localhost:3333/cars'
 const form = $('cars-form')
 const table = $('table')
 
@@ -40,46 +40,55 @@ function createColor(value) {
 
 }
 
-
 form.addEventListener('submit', (e) => {
   e.preventDefault()
   const getElement = getFormElement(e)
 
-  const elements = [
-    { type: 'image', value: getElement('image').value },
-    { type: 'text', value: getElement('brand-model').value },
-    { type: 'text', value: getElement('year').value },
-    { type: 'text', value: getElement('plate').value },
-    { type: 'color', value: getElement('color').value }
-  ]
-
+  const data = {   // esses são os dados que vem da api 
+    image: getElement('image').value,
+    bradModel: getElement('brand-model').value,
+    year: getElement('year').value,
+    plate: getElement('plate').value,
+    color: getElement('color').value
+  }
+  
+  createTableRow(data)
+  
   const tr = document.createElement('tr')
   elements.forEach(element => {
     const td = elementsTypes[element.type](element.value)
     tr.appendChild(td)
   })
   table.appendChild(tr)
-
+  
   e.target.reset()
   image.focus()
 })
 
-function createTableRow(){
+function createTableRow(data) {
   const tr = document.createElement('tr')
+  
+  const elements = [ 
+    { type: 'image', value: getElement('image').value },
+    { type: 'text', value: getElement('brand-model').value },
+    { type: 'text', value: getElement('year').value },
+    { type: 'text', value: getElement('plate').value },
+    { type: 'color', value: getElement('color').value }
+  ]
 }
 
-async function main () {
-    const result = await fetch(url)
+async function main() {
+  const result = await fetch(url)
     .then(r => r.json())
-    .catch(e => ({ error: true, message: e.message}))
-    
-    if(result.error) {
-      c('Erro ao buscar carro:', result.message)
-      return
-    }
+    .catch(e => ({ error: true, message: e.message }))
+
+  if (result.error) {
+    c('Erro ao buscar carro:', result.message)
+    return
+  }
 }
 
-result.forEach(car => {
+result.forEach(car => { //feito em 57min  
   car.image
   car.bradModel
   car.year
@@ -96,4 +105,3 @@ main()
 
 
 
-  
