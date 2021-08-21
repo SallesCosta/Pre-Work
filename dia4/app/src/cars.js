@@ -1,5 +1,7 @@
 function c(x) { console.log(x) } function $(x) { return document.querySelector(`[data-js='${x}']`) }
 
+import { get, post } from "./http"
+
 const url = 'http://localhost:3333/cars'
 const form = $('cars-form')
 const table = $('table')
@@ -41,7 +43,7 @@ function createColor(value) {
 
 }
 
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', async (e) => {
   e.preventDefault()
   const getElement = getFormElement(e)
 
@@ -53,8 +55,15 @@ form.addEventListener('submit', (e) => {
     color: getElement('color').value
   }
 
-  createTableRow(data)
+  const result = await post(url, data)
 
+  if (result.error) {
+     c('deu erro na hora de cadastrar', result.message)
+    return
+  }
+  const noContent = document.querySelector('[data-js="not-content"]')
+  table.removeChild(noContent) //inserido em 1h41 
+  createTableRow(data)
 
   e.target.reset()
   image.focus()
@@ -68,7 +77,10 @@ function createTableRow(data) {
     { type: 'text', value: data.plate },
     { type: 'color', value: data.color }
   ]
+
   const tr = document.createElement('tr')
+  tr.dataset.plate = data.plate 
+    
   elements.forEach(element => {
     const td = elementsTypes[element.type](element.value)
     tr.appendChild(td)
@@ -76,31 +88,47 @@ function createTableRow(data) {
   table.appendChild(tr)
 }
 
+const button = document.createElemente('buttton')
+button.textContent = 'Excluir'
+button.dataset.plate = data.plate 
+
+button.document.addEventListener('click', handleDelete)
+tr.appendChild(button)
+
+function handleDelete (e) {
+  const button = e.target
+  const plate = button.dataset.plate
+  const tr = document.querySelector(`tr[data-plate="${plate} "]`)
+  table.removeChild(tr)
+  button.removeElementListener('click',  handleDelete)
+}
+
 function createNoCarRow() {
   const tr = document.createElement('tr')
   const td = document.createElement('td')
   const thsLength = document.querySelectorAll('table th').length
-  td.setAttribute('colspan', thsLength )
+  td.setAttribute('colspan', thsLength)
   td.textContent = 'Nenhum carro encontrado '
+  
+  
+  tr.dataset.js = 'no-content'  // tr.setAttribute('data-js', 'no-content') //dataset.xx é a mesma coisa que setAttribute 
   tr.appendChild(td)
   table.appendChild(tr)
 }
 
 async function main() {
-  const result = await fetch(url)
-    .then(r => r.json())
-    .catch(e => ({ error: true, message: e.message }))
+  const result = await get(url)
 
   if (result.error) {
     c('Erro ao buscar carro:', result.message)
     return
   }
-  
+
   if (result.length === 0) {
-     createNoCarRow()
+    createNoCarRow()
     return
   }
- 
+
   result.forEach(createTableRow)
 }
 
