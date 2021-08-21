@@ -5,10 +5,10 @@ const request = (url, options) =>
 
 const createRequest = (method) => (url, data) => request(url, {
     method,
-    header:{
+    Headers: {
         'content-type': 'application/json',
     },
-    body:JSON.stringify(data)
+    body: JSON.stringify(data)
 })
 
 export const get = (url) => request(url)
