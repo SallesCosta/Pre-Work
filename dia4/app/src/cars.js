@@ -79,8 +79,8 @@ function createTableRow(data) {
 function createNoCarRow() {
   const tr = document.createElement('tr')
   const td = document.createElement('td')
-  const ths = document.querySelectorAll('table th').length
-  td.setAttribute('colspan', ths)
+  const thsLength = document.querySelectorAll('table th').length
+  td.setAttribute('colspan', thsLength )
   td.textContent = 'Nenhum carro encontrado '
   tr.appendChild(td)
   table.appendChild(tr)
