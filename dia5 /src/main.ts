@@ -5,8 +5,12 @@ const url = 'http://localhost:3333/cars'
 const form = document.querySelector('[data-js="cars-form"]')
 const table = document.querySelector('[data-js="table"]')
 
-const getFormElement = (event) => (elementName) => {
-  return event.target.elements[elementName]
+const getFormElement = (event: Event) => (elementName: string) => {
+  const target = event.target as HTMLFormElement
+  if (!event) {
+    return
+  }
+  return target.elements.namedItem(elementName)
 }
 
 const elementTypes = {
@@ -43,6 +47,14 @@ function createColor (value) {
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault()
+
+  const target = e.target as HTMLFormElement
+  // const target = <HTMLFormElement>e.target   //essas duas linhas dizen a mesma coisa.. mas o genérics nao é muito recomendado pro react
+
+  if (!target) {
+    return
+  }
+
   const getElement = getFormElement(e)
 
   const data = {
@@ -68,7 +80,7 @@ form.addEventListener('submit', async (e) => {
   createTableRow(data)
 
   e.target.reset()
-  image.focus()
+  data.image.focus()
 })
 
 function createTableRow (data) {
