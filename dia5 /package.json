@@ -1,0 +1,19 @@
+{
+  "private": "true",
+  "name": "dia5",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "serve": "vite preview",
+    "type-check": "tsc --pretty --noEmit"
+  },
+  "devDependencies": {
+    "react-dom": "17.0.2",
+    "typescript": "^4.3.2",
+    "vite": "^2.4.4"
+  },
+  "dependencies": {
+    "react": "17.0.2"
+  }
+}
