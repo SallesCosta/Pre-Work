@@ -1,54 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dia 4</title>
+  </head>
+  <body>
+    <div class="error-message hide" data-js="error"></div>
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dia 4</title>
-</head>
+    <div class="cars">
+      <form data-js="cars-form">
+        <div>
+          <label for="image">Imagem (URL)</label>
+          <input type="text" id="image" name="image" value="https://cdn.drivek.it/configurator-covermobile/cars/fr/768/MERCEDES/GLA/39316_CROSSOVER-5-PORTES/mercedes-benz-gla-2020-mobile.jpg">
+        </div>
 
-<body>
-  <div class="cars">
-    <form data-js="cars-form">
-      <div>
-        <label for="image">Image(URL)</label>
-        <input type="text" name="image" id="image" value="https://cdn.drivek.it/configurator-covermobile/cars/fr/768/MERCEDES/GLA/39316_CROSSOVER-5-PORTES/mercedes-benz-gla-2020-mobile.jpg">
-      </div>
-      <div>
-        <label for="brand-model">Marca - Modelo</label>
-        <input type="text" name="brand-model" id="brand-model" value="Mercedez">
-      </div>
-      <div>
-        <label for="year">Ano</label>
-        <input type="number" name="year" id="year" value="2021">
-      </div>
-      <div>
-        <label for="plate">Placa</label>
-        <input type="text" name="plate" id="plate" value="abc-1234">
-      </div>
-      <div>
-        <label for="color">Cor</label>
-        <input type="color" name="color" id="color" value="#474343">
-      </div>
-      <button type="submit">Cadastrar Carro</button>
-    </form>
-    <table border="1">
-      <thead>
-        <tr>
-          <th>Image</th>
-          <th>Marca / Modelo</th>
-          <th>Ano</th>
-          <th>Placa</th>
-          <th>Cor</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody data-js="table"></tbody>
-    </table>
-  </div>
+        <div>
+          <label for="brand-model">Marca / Modelo</label>
+          <input type="text" id="brand-model" name="brand-model" value="Mercedez">
+        </div>
 
-  <script type="module" src="./src/main.js"></script>
-</body>
+        <div>
+          <label for="year">Ano</label>
+          <input type="number" id="year" name="year" value="2022">
+        </div>
 
+        <div>
+          <label for="plate">Placa</label>
+          <input type="text" id="plate" name="plate" value="AAA-1111">
+        </div>
+
+        <div>
+          <label for="color">Cor</label>
+          <input type="color" id="color" name="color" value="#585555">
+        </div>
+
+        <button type="submit">Cadastrar carro</button>
+      </form>
+
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Imagem</th>
+            <th>Marca / Modelo</th>
+            <th>Ano</th>
+            <th>Placa</th>
+            <th>Cor</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody data-js="table">
+        </tbody>
+      </table>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
 </html>
