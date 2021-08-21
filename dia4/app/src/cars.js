@@ -51,30 +51,28 @@ form.addEventListener('submit', (e) => {
     plate: getElement('plate').value,
     color: getElement('color').value
   }
-  
+
   createTableRow(data)
-  
-  const tr = document.createElement('tr')
-  elements.forEach(element => {
-    const td = elementsTypes[element.type](element.value)
-    tr.appendChild(td)
-  })
-  table.appendChild(tr)
-  
+
+
   e.target.reset()
   image.focus()
 })
 
 function createTableRow(data) {
-  const tr = document.createElement('tr')
-  
-  const elements = [ 
-    { type: 'image', value: getElement('image').value },
-    { type: 'text', value: getElement('brand-model').value },
-    { type: 'text', value: getElement('year').value },
-    { type: 'text', value: getElement('plate').value },
-    { type: 'color', value: getElement('color').value }
+  const elements = [
+    { type: 'image', value: data.image },
+    { type: 'text', value: data.bradModel },
+    { type: 'text', value: data.year },
+    { type: 'text', value: data.plate },
+    { type: 'color', value: data.color }
   ]
+  const tr = document.createElement('tr')
+  elements.forEach(element => {
+    const td = elementsTypes[element.type](element.value)
+    tr.appendChild(td)
+  })
+  table.appendChild(tr) 
 }
 
 async function main() {
@@ -88,13 +86,7 @@ async function main() {
   }
 }
 
-result.forEach(car => { //feito em 57min  
-  car.image
-  car.bradModel
-  car.year
-  car.plate
-  car.color
-})
+result.forEach(createTableRow)
 
 main()
 
