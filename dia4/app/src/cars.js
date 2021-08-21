@@ -14,10 +14,11 @@ const elementsTypes = {
   color: createColor
 }
 
-function createImage(value) {
+function createImage(data) {
   const td = document.createElement('td')
   const img = document.createElement('img')
-  img.src = value
+  img.src = data.src
+  img.alt = data.alt
   img.width = 100
   td.appendChild(img)
   return td
@@ -61,7 +62,7 @@ form.addEventListener('submit', (e) => {
 
 function createTableRow(data) {
   const elements = [
-    { type: 'image', value: data.image },
+    { type: 'image', value: { src: data.img, alt: data.bradModel } },
     { type: 'text', value: data.bradModel },
     { type: 'text', value: data.year },
     { type: 'text', value: data.plate },
@@ -72,7 +73,17 @@ function createTableRow(data) {
     const td = elementsTypes[element.type](element.value)
     tr.appendChild(td)
   })
-  table.appendChild(tr) 
+  table.appendChild(tr)
+}
+
+function createNoCarRow() {
+  const tr = document.createElement('tr')
+  const td = document.createElement('td')
+  const ths = document.querySelectorAll('table th').length
+  td.setAttribute('colspan', ths)
+  td.textContent = 'Nenhum carro encontrado '
+  tr.appendChild(td)
+  table.appendChild(tr)
 }
 
 async function main() {
@@ -84,9 +95,14 @@ async function main() {
     c('Erro ao buscar carro:', result.message)
     return
   }
+  
+  if (result.length === 0) {
+     createNoCarRow()
+    return
+  }
+ 
+  result.forEach(createTableRow)
 }
-
-result.forEach(createTableRow)
 
 main()
 
