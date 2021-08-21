@@ -1,12 +1,6 @@
-function c(x) {
-  console.log(x)
-}
+function c(x) { console.log(x) } function $(x) { return document.querySelector(`[data-js='${x}']`) }
 
-function $(x) {
-  return document.querySelector(`[data-js='${x}']`)
-}
-
-const url = 'http://localhost:3333/cars'
+ const url = 'http://localhost:3333/cars'
 const form = $('cars-form')
 const table = $('table')
 
@@ -102,3 +96,4 @@ main()
 
 
 
+  
